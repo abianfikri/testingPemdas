@@ -7,6 +7,7 @@ string pesan[20];									// Array untuk status
 double matematika[20], inggris[20], rata_rata[20]; // Array nilai matematika, bahasa inggris, dan rata rata
 double total_nilai;								   // variable untuk menghitung nilai matematika dan bahasa inggris
 int n;											  // varible n untuk memasukkan jumlah data
+int lulus, gagal;
 
 void input() {
 	while (true)
@@ -62,20 +63,44 @@ int rerata() { // procedure mengembalikan nilai rerata
 }
 
 void status() { // procedure status
+	
 	for (int i = 0; i < n; i++)  // Looping dengan i mulai dari 0 sampai n-1
 	{	
 		
-		if (rata_rata[i] > 80) {		// Jika rerata > 80 maka diterima
+		if (rata_rata[i] >= 70 || rata_rata[i] >= 80 ) {		// Jika rerata > 80 maka diterima
 			pesan[i] = "Diterima";
+			lulus++;
 		}
-		else{							// Jika rerata < 80 maka tidak diterima
-
+		else{							// Jika rerata < 80 maka tidak 
 			pesan[i] = "Tidak Diterima";
+			gagal++;
 		}
 	}	
 }
 
-void display() {
+void display() { // Display table
+	cout << endl;											// Output baris Ko
+
+	cout << "--------------------------------------------------" << endl;
+	cout << "Data Nilai\n";
+	cout << "--------------------------------------------------" << endl;
+	cout << "No\tNama\tMtk\tIng\tNilai\tStatus" << endl;
+	cout << "--------------------------------------------------" << endl;
+	for (int j = 0; j < n; j++) {					// Looping dengan j dimulai dari 0  hingga n-1
+
+		cout << (j + 1) << "\t" << arr[j] + "\t" << matematika[j] << "\t"
+			<< inggris[j] << "\t" << rata_rata[j] << "\t" << pesan[j] << endl;
+		cout << "--------------------------------------------------" << endl;
+	}
+
+	cout << endl;
+	cout << "Jumlah Diterima: " << lulus << endl;
+	cout << "Jumlah Tidak Diterima: " << gagal << "\n";
+
+}
+
+
+void display2() {
 	cout << endl;											// Output baris Kosong
 	cout << "\n==================================" << endl;   // Output ke layar
 	cout << "Data Nilai Mahasiswa" << endl;    // Output ke layar  
@@ -92,7 +117,10 @@ void display() {
 
 		cout << endl;
 	}
-	cout << endl << endl;
+	cout << endl;
+	cout << "Jumlah Diterima: " << lulus << endl;
+	cout << "Jumlah Tidak Diterima: " << gagal << "\n";
+
 }
 
 
